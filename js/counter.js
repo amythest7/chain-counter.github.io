@@ -47,21 +47,19 @@ function updateMessage() {
 // Refactored and added DRY concepts (No more ugly else if's!)
 
 function getMessageFor(counterValue) {
-    switch (counterValue < 255){
+    switch (counterValue < max){
         case (counterValue <= 4):
-            return "No guaranteed IVs, 0% HA Chance, low shiny chance";
+            return "No guaranteed IVs, 0% HA Chance, 1/4096 (No charm) 1/1365 (With charm)";
         case (counterValue <= 9):
-            return "1 guaranteed IV, 0% HA Chance, low shiny chance";
+            return "1 guaranteed IV, 0% HA Chance, 1/4096 (No charm) 1/1365 (With charm)";
         case (counterValue <= 19):
-            return "2 guaranteed IVs, 5% HA Chance, low shiny chance";
+            return "2 guaranteed IVs, 5% HA Chance, 1/819 (No charm) 1/683 (With charm)";
         case (counterValue <= 29):
-            return "3 guaranteed IVs, 10% HA Chance, low shiny chance";
-        case (counterValue <= 69):
-            return "4 guaranteed IVs, 15% HA Chance, low shiny chance";
+            return "3 guaranteed IVs, 10% HA Chance, 1/585 (No charm) 1/455 (With charm)";
         case (counterValue < 255):
-            return "4 perfect IVs, 15% HA chance, high (relative) shiny chance";
-        case (counterValue === 255):
-            return "4 guaranteed IVs, 15% HA Chance, high shiny chance (note - your chain has been reset to zero in-game)";
+            return "4 perfect IVs, 15% HA chance, 1/315 (No charm) 1/273 (With charm)";
+        case (counterValue >= 255):
+            return "4 guaranteed IVs, 15% HA Chance,  1/315 (No charm) 1/273 (With charm) (note - your chain has been reset to zero in-game if playing Sun or Moon)";
         case (counterValue === max || counterValue === min):
             return "LIMIT reached!";
     }
